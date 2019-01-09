@@ -1,10 +1,10 @@
 {
-  "name": "@grpc/grpc-js",
+  "name": "@esmodule/grpc-js",
   "version": "0.3.2",
-  "description": "gRPC Library for Node - pure JS implementation",
+  "description": "gRPC Library for Node - pure JS implementation. ",
   "homepage": "https://grpc.io/",
   "repository": "https://github.com/grpc/grpc-node/tree/master/packages/grpc-js",
-  "main": "build/src/index.js",
+  "main": "build/src/index",
   "engines": {
     "node": "^8.11.2 || >=9.4"
   },
@@ -15,13 +15,14 @@
   "types": "build/src/index.d.ts",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@types/lodash": "^4.14.108",
-    "@types/mocha": "^2.2.43",
-    "@types/node": "^10.5.4",
-    "clang-format": "^1.0.55",
-    "gts": "^0.5.1",
-    "lodash": "^4.17.4",
-    "typescript": "~2.7.0"
+    "@types/lodash": "^4.14.119",
+    "@types/mocha": "^2.2.48",
+    "@types/node": "^10.12.18",
+    "@types/semver": "^5.5.0",
+    "clang-format": "^1.2.4",
+    "gts": "^0.9.0",
+    "lodash": "^4.17.11",
+    "typescript": "^3.2.2"
   },
   "contributors": [
     {
@@ -31,7 +32,9 @@
   "scripts": {
     "build": "npm run compile",
     "clean": "gts clean",
-    "compile": "tsc -p .",
+    "compile": "npm run compile:esm && npm run compile:cjs",
+    "compile:cjs": "tsc -p tsconfig.cjs.json",
+    "compile:esm": "tsc -p tsconfig.esm.json && ./renameJStoMJS.sh",
     "format": "clang-format -i -style=\"{Language: JavaScript, BasedOnStyle: Google, ColumnLimit: 80}\" src/*.ts test/*.ts",
     "lint": "tslint -c node_modules/google-ts-style/tslint.json -p . -t codeFrame --type-check",
     "prepare": "npm run compile",
@@ -45,6 +48,6 @@
     "semver": "^5.5.0"
   },
   "files": [
-    "build/src/*.{js,d.ts}"
+    "build/src/*.{js,mjs,d.ts}"
   ]
 }
