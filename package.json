@@ -1,7 +1,7 @@
 {
   "name": "@esmodule/grpc-js",
   "version": "0.3.2",
-  "description": "gRPC Library for Node - pure JS implementation. ",
+  "description": "gRPC Library for Node - pure JS implementation. Fork to export .mjs and .js modules side by side",
   "homepage": "https://grpc.io/",
   "repository": "https://github.com/grpc/grpc-node/tree/master/packages/grpc-js",
   "main": "build/src/index",
